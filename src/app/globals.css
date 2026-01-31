@@ -1,26 +1,116 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+/* @custom-variant dark (&:is(.dark *)); */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0.973 0.0058 84.57);
+  --foreground: oklch(0.2724 0.009 67.44);
+
+  --card: oklch(0.9862 0.0024 84.56);
+  --card-foreground: oklch(0.2724 0.009 67.44);
+
+  --popover: oklch(0.9862 0.0024 84.56);
+  --popover-foreground: oklch(0.2724 0.009 67.44);
+
+  --primary: oklch(0.6772 0.1571 35.19);
+  --primary-foreground: oklch(0.9865 0.0029 84.56);
+
+  --secondary: oklch(0.9298 0.0138 76.58);
+  --secondary-foreground: oklch(0.3749 0.0138 67.39);
+
+  --muted: oklch(0.9422 0.007358 76.6157);
+  --muted-foreground: oklch(0.5618 0.0224 67.34);
+
+  --accent: oklch(0.6436 0.0996 168.41);
+  --accent-foreground: oklch(0.9865 0.0029 84.56);
+
+  --destructive: oklch(0.6356 0.2082 25.38);
+  --destructive-foreground: oklch(0.9865 0.0029 84.56);
+
+  --border: oklch(0.913 0.0111 76.59);
+  --input: oklch(0.913 0.0111 76.59);
+  --ring: oklch(0.6772 0.1571 35.19);
+
+  --radius: 1rem;
+
+  /* Custom design tokens */
+  --gradient-warm: linear-gradient(
+    135deg,
+    oklch(0.6772 0.1571 35.19) 0%,
+    oklch(0.7232 0.15 60.63) 100%
+  );
+  --gradient-soft: linear-gradient(
+    180deg,
+    oklch(0.973 0.0058 84.57) 0%,
+    oklch(0.9431 0.0092 76.61) 100%
+  );
+  --gradient-card: linear-gradient(
+    145deg,
+    oklch(0.9931 0.0012 84.55) 0%,
+    oklch(0.9719 0.0039 84.56) 100%
+  );
+  --shadow-soft: 0 4px 40px hsl(30 20% 50% / 0.08);
+  --shadow-warm: 0 8px 60px hsl(12 76% 61% / 0.12);
+
+  --sidebar-background: oklch(0.9862 0.0024 84.56);
+  --sidebar-foreground: oklch(0.3749 0.0138 67.39);
+  --sidebar-primary: oklch(0.6772 0.1571 35.19);
+  --sidebar-primary-foreground: oklch(0.9865 0.0029 84.56);
+  --sidebar-accent: oklch(0.9439 0.011 76.6);
+  --sidebar-accent-foreground: oklch(0.3749 0.0138 67.39);
+  --sidebar-border: oklch(0.913 0.0111 76.59);
+  --sidebar-ring: oklch(0.6772 0.1571 35.19);
 }
 
-@theme inline {
+.dark {
+  --background: oklch(0.1955 0.0078 67.35);
+  --foreground: oklch(0.9648 0.0049 84.56);
+  --card: oklch(0.2186 0.009465137102827611 67.29820527457237);
+  --card-foreground: oklch(0.9648 0.0049 84.56);
+  --popover: oklch(0.2186 0.009465137102827611 67.29820527457237);
+  --popover-foreground: oklch(0.9648 0.0049 84.56);
+  --primary: oklch(0.6772 0.1571 35.19);
+  --primary-foreground: oklch(0.1946 0.0052 67.51);
+  --secondary: oklch(0.274 0.0134 67.22);
+  --secondary-foreground: oklch(0.9293 0.0098 84.58);
+  --muted: oklch(0.3048 0.0125 67.33);
+  --muted-foreground: oklch(0.6575 0.0335 76.3);
+  --accent: oklch(0.6436 0.0996 168.41);
+  --accent-foreground: oklch(0.1946 0.0052 67.51);
+  --destructive: oklch(0.3996 0.1348 25.77);
+  --destructive-foreground: oklch(0.9648 0.0049 84.56);
+  --border: oklch(0.3048 0.0125 67.33);
+  --input: oklch(0.3048 0.0125 67.33);
+  --ring: oklch(0.6772 0.1571 35.19);
+}
+
+@theme {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
