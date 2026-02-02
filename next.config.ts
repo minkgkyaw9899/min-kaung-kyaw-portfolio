@@ -1,12 +1,21 @@
-import mdx from "@next/mdx";
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
-const withMDX = mdx();
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+});
 
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  redirects: async () => [
+    {
+      source: "/",
+      destination: "/en/portfolio",
+      permanent: true,
+    },
+  ],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactCompiler: true,
   compiler: {
     removeConsole: isProd,
